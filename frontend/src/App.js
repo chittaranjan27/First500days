@@ -19,26 +19,48 @@ function App() {
       const formData = new FormData();
       formData.append('file', file);
 
+      console.log('Uploading file:', file.name, 'Size:', file.size);
+
       const response = await fetch('http://localhost:8000/api/analyze', {
         method: 'POST',
         body: formData,
       });
 
+      console.log('Response status:', response.status, response.statusText);
+
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.detail || 'Failed to analyze chat file');
+        let errorMessage = 'Failed to analyze chat file';
+        try {
+          const errorData = await response.json();
+          errorMessage = errorData.detail || errorMessage;
+        } catch (parseError) {
+          // If response is not JSON, try to get text
+          try {
+            const errorText = await response.text();
+            errorMessage = errorText || errorMessage;
+          } catch (textError) {
+            errorMessage = `Server error: ${response.status} ${response.statusText}`;
+          }
+        }
+        throw new Error(errorMessage);
       }
 
       const result = await response.json();
-      setAnalyticsData(result.data);
+      console.log('Upload successful, received data:', result);
+      
+      if (result.success && result.data) {
+        setAnalyticsData(result.data);
+      } else {
+        throw new Error('Invalid response format from server');
+      }
     } catch (err) {
       // Handle network errors
-      if (err.message === 'Failed to fetch' || err.name === 'TypeError') {
+      if (err.message === 'Failed to fetch' || err.name === 'TypeError' || err.message.includes('NetworkError')) {
         setError('Unable to connect to the server. Please make sure the backend is running on http://localhost:8000');
       } else {
         setError(err.message || 'An error occurred while processing the file');
       }
-      console.error('Error:', err);
+      console.error('Upload error:', err);
     } finally {
       setLoading(false);
     }

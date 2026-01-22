@@ -57,6 +57,10 @@ const FileUpload = ({ onFileUpload, loading, error }) => {
     <div className="file-upload-section">
       <div
         className={`file-upload-area ${dragActive ? 'drag-active' : ''} ${loading ? 'loading' : ''}`}
+        onClick={() => { if (!loading) handleButtonClick(); }}
+        onKeyDown={(e) => { if (!loading && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); handleButtonClick(); } }}
+        role="button"
+        tabIndex={0}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
         onDragOver={handleDrag}

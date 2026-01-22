@@ -28,9 +28,12 @@ def parse_whatsapp_chat(text_content: str) -> List[Dict]:
     
     # Pattern to match WhatsApp message format
     # Supports formats like:
-    # [DD/MM/YYYY, HH:MM:SS AM/PM] or [MM/DD/YYYY, HH:MM:SS AM/PM]
+    # [DD/MM/YYYY, HH:MM:SS AM/PM] or [MM/DD/YYYY, HH:MM:SS AM/PM] (with brackets)
+    # DD/MM/YYYY, HH:MM:SS AM/PM - (without brackets, with dash)
     # [DD/MM/YYYY, HH:MM:SS] (24-hour format)
-    date_pattern = r'\[(\d{1,2}[/-]\d{1,2}[/-]\d{2,4}),\s*(\d{1,2}:\d{2}(?::\d{2})?(?:\s*[AP]M)?)\]'
+    # Try bracket format first, then dash format
+    date_pattern_brackets = r'\[(\d{1,2}[/-]\d{1,2}[/-]\d{2,4}),\s*(\d{1,2}:\d{2}(?::\d{2})?(?:\s*[AP]M)?)\]\s*(.*)'
+    date_pattern_dash = r'(\d{1,2}[/-]\d{1,2}[/-]\d{2,4}),\s*(\d{1,2}:\d{2}(?::\d{2})?(?:\s*[AP]M)?)\s*-\s*(.*)'
     
     current_message = None
     
@@ -39,16 +42,26 @@ def parse_whatsapp_chat(text_content: str) -> List[Dict]:
         if not line:
             continue
         
-        # Try to match message header
-        match = re.match(date_pattern, line)
+        # Try to match message header - first try bracket format, then dash format
+        match = re.match(date_pattern_brackets, line)
+        if not match:
+            match = re.match(date_pattern_dash, line)
         
         if match:
             # Save previous message if exists
             if current_message:
                 messages.append(current_message)
             
-            date_str, time_str = match.groups()
-            remaining = line[match.end():].strip()
+            # Extract groups - format depends on which pattern matched
+            groups = match.groups()
+            date_str = groups[0]
+            time_str = groups[1]
+            # For bracket format, remaining is in group 2, for dash format it's in group 2
+            # But dash format already has remaining text in group 2, bracket needs extraction
+            if len(groups) >= 3:
+                remaining = groups[2].strip()
+            else:
+                remaining = line[match.end():].strip()
             
             # Parse date - try multiple formats
             date_obj = parse_date(date_str)
