@@ -1,0 +1,41 @@
+[12/01/2024, 10:30:15 AM] John Doe: Hey everyone! How's it going?
+[12/01/2024, 10:32:22 AM] Jane Smith: Good morning! All good here
+[12/01/2024, 10:35:10 AM] Bob Johnson: Morning folks
+[12/01/2024, 11:15:45 AM] Alice Williams joined
+[12/01/2024, 11:20:30 AM] Alice Williams: Hi everyone, glad to be here!
+[12/01/2024, 2:45:12 PM] John Doe: Anyone up for a meeting later?
+[12/01/2024, 3:00:00 PM] Jane Smith: Sure, count me in
+[13/01/2024, 9:15:30 AM] John Doe: Good morning team
+[13/01/2024, 9:20:15 AM] Bob Johnson: Morning!
+[13/01/2024, 9:25:45 AM] Alice Williams: Good morning everyone
+[13/01/2024, 10:00:00 AM] Jane Smith: Morning all
+[13/01/2024, 2:30:20 PM] John Doe: Quick update on the project
+[13/01/2024, 2:35:10 PM] Bob Johnson: Thanks for the update
+[14/01/2024, 8:45:00 AM] John Doe: Starting the day early today
+[14/01/2024, 9:00:15 AM] Jane Smith: Me too!
+[14/01/2024, 9:10:30 AM] Alice Williams: Same here
+[14/01/2024, 11:30:45 AM] Bob Johnson: Charlie Brown joined
+[14/01/2024, 11:35:20 AM] Charlie Brown: Hello team!
+[14/01/2024, 3:20:10 PM] John Doe: Great work today everyone
+[15/01/2024, 10:00:00 AM] John Doe: Monday morning check-in
+[15/01/2024, 10:05:30 AM] Jane Smith: Here!
+[15/01/2024, 10:10:15 AM] Bob Johnson: Present
+[15/01/2024, 10:15:45 AM] Alice Williams: Here
+[15/01/2024, 1:30:20 PM] John Doe: Reminder about the deadline
+[16/01/2024, 9:30:00 AM] John Doe: Good morning
+[16/01/2024, 9:35:15 AM] Jane Smith: Morning John
+[16/01/2024, 10:00:30 AM] Bob Johnson: Morning
+[16/01/2024, 11:15:45 AM] Alice Williams: Morning everyone
+[16/01/2024, 2:00:00 PM] Charlie Brown: Quick question about the project
+[17/01/2024, 8:30:00 AM] John Doe: Early start today
+[17/01/2024, 9:00:15 AM] Jane Smith: Same here
+[17/01/2024, 9:15:30 AM] Bob Johnson: Morning
+[17/01/2024, 9:20:45 AM] Alice Williams: Good morning
+[17/01/2024, 10:30:00 AM] John Doe: Status update needed
+[17/01/2024, 10:35:20 AM] Jane Smith: Will send it shortly
+[18/01/2024, 9:00:00 AM] John Doe: Friday check-in
+[18/01/2024, 9:05:30 AM] Jane Smith: Here
+[18/01/2024, 9:10:15 AM] Bob Johnson: Present
+[18/01/2024, 9:15:45 AM] Alice Williams: Here
+[18/01/2024, 9:20:00 AM] Charlie Brown: Present
+[18/01/2024, 3:00:00 PM] John Doe: Have a great weekend everyone!
